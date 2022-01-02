@@ -53,7 +53,7 @@ duyarız.
 
 ## Canlı test
 - Aşağıdaki adrese 1 matic yollayarak nft mintlemeyi test edebilirsiniz.
-
+- polygonscan'da görmek için [polygonscan](https://polygonscan.com/address/0x0090d28dac1101e5d9ba18a2e8eb7dc554b39737). 
 - ![Contract QR](/contractQR.png)
 
 
