@@ -1190,8 +1190,7 @@ contract CandyMachine is Ownable, ERC721Enumerable, ReentrancyGuard {
     }
 
     function mintwithtx() public payable nonReentrant() {
-        uint256 totalSupply = totalSupply();
-        if(totalSupply + 1 <= maxNFT) {
+        if(totalSupply() + 1 <= maxNFT) {
             newTokenId += 1;
             _safeMint(msg.sender, newTokenId);
             uint balance = address(this).balance;
