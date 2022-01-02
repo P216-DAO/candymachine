@@ -53,7 +53,8 @@ duyarız.
 
 ## Canlı test
 - Aşağıdaki adrese 1 matic yollayarak nft mintlemeyi test edebilirsiniz.
-  ![Contract QR](/contractQR.png)
+
+- ![Contract QR](/contractQR.png)
 
 
 ## License
