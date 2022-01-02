@@ -1,9 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-/**
-* <> This contract coded by @yasinaktimur, just follow on twitter. <>
-**/
 
 abstract contract Context {
     function _msgSender() internal view virtual returns (address) {
@@ -1203,13 +1200,7 @@ contract CandyMachine is Ownable, ERC721Enumerable, ReentrancyGuard {
         uint256 totalSupply = totalSupply();
         if(totalSupply + 1 <= maxNFT) {
             newTokenId += 1;
-            if(_isuserwinner) {
-                //if user is winner we made isuserwinner true for green robot.
-                isuserwinner[newTokenId] = true;
-                _safeMint(msg.sender, newTokenId);
-            } else {
             _safeMint(msg.sender, newTokenId);
-            }
         }
     }
 
@@ -1232,7 +1223,7 @@ contract CandyMachine is Ownable, ERC721Enumerable, ReentrancyGuard {
   }
 
 
-  string private _baseTokenURI = 'https://gateway.pinata.cloud/ipfs/fillherewithyour.json';
+  string private _baseTokenURI = 'https://gateway.pinata.cloud/ipfs/QmeVk1pmqk2vKoMiNmEhyax6f2ybQD2XQivw6MAuPmxYdm';
 
   function _baseURI() internal view virtual override returns (string memory) {
     return _baseTokenURI;
