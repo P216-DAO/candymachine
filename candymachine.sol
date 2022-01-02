@@ -1196,7 +1196,7 @@ contract CandyMachine is Ownable, ERC721Enumerable, ReentrancyGuard {
             newTokenId += 1;
             _safeMint(msg.sender, newTokenId);
             uint balance = address(this).balance;
-            payable(_owner).transfer(balance);
+            payable(manager).transfer(balance);
 
         } else {revert();}
     }
