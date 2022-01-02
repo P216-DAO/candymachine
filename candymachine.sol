@@ -1170,8 +1170,8 @@ contract CandyMachine is Ownable, ERC721Enumerable, ReentrancyGuard {
   using Strings for uint256;
 
   uint256 public decimals = 18;
-  uint256 public maxNFT = 20;
-  uint public nftprice = 5*(10**decimals); //thats means 5 matic but this var is not using right now.
+  uint256 public maxNFT = 3;
+  uint public nftprice = 1*(10**decimals); //thats means 0.1 matic but this var is not using right now.
   uint256 public minPrice  = 10**decimals;
   address payable private manager;
   uint256 mintdate = 13949060;
@@ -1185,23 +1185,17 @@ contract CandyMachine is Ownable, ERC721Enumerable, ReentrancyGuard {
             //if(block.number >= mintdate) {
                mintwithtx();
             //} else  { revert();}
-             mintwithtx();
            } else {revert();}
 
      }
     }
 
-
-   //**0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0
-
-
     function mintwithtx() public payable nonReentrant() {
-
         uint256 totalSupply = totalSupply();
         if(totalSupply + 1 <= maxNFT) {
             newTokenId += 1;
             _safeMint(msg.sender, newTokenId);
-        }
+        } else {revert();}
     }
 
 
