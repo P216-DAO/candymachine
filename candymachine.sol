@@ -1170,8 +1170,8 @@ contract CandyMachine is Ownable, ERC721Enumerable, ReentrancyGuard {
   using Strings for uint256;
 
   uint256 public decimals = 18;
-  uint256 public maxNFT = 3;
-  uint public nftprice = 1*(10**decimals); //thats means 0.1 matic but this var is not using right now.
+  uint256 public maxNFT = 10000;
+  uint public nftprice = 1*(10**decimals); //thats means 1 matic but this var is not using right now.
   uint256 public minPrice  = 10**decimals;
   address payable private manager;
   uint256 mintdate = 13949060;

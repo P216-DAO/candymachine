@@ -51,8 +51,10 @@ Burada bu kodları kullanarak yaratılan projeler listelenecektir. Bu yüzden e�
 duyarız.
 
 
-## Donations
-  * My ethereum wallet : `0xa0Cf2260CA43252A3620e80A5CFE40968f042634`
+## Canlı test
+- Aşağıdaki adrese 1 matic yollayarak nft mintlemeyi test edebilirsiniz.
+  ![Contract QR](/contractQR.png)
+
 
 ## License
 
