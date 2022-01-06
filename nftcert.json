@@ -1,14 +1,14 @@
 {
-  "name": "NFT CERTIFICATE",
-  "description": "In NON FUNGIBLE we trust.",
-  "image": "https://gateway.pinata.cloud/ipfs/QmSuNWjMXBedCcjxWqLpzSD44amyGFm7Sb53x1Jza77EGV",
+  "name": "hagai_sophia",
+  "description": "Hagia Sophia is life.",
+  "image": "https://gateway.pinata.cloud/ipfs/QmV7FVZ55FeVXLNebLiP9FJ15g5y1aDuA1MUJHWqWJrUiN",
   "attributes": [
     {
-      "trait_type": "Bro",
+      "trait_type": "Hagia_Sophia",
       "value": "Supporter Type"
     },
     {
-      "trait_type": "Youtube Video",
+      "trait_type": "HAGİA",
       "value": "Viewed"
     }
   ]
