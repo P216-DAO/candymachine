@@ -1166,23 +1166,25 @@ abstract contract ERC721Enumerable is ERC721, IERC721Enumerable {
 
 pragma solidity ^0.8.0;
 
-contract CandyMachine is Ownable, ERC721Enumerable, ReentrancyGuard {
+contract AAXXX is Ownable, ERC721Enumerable, ReentrancyGuard {
   using Strings for uint256;
 
   uint256 public maxNFT = 10000;
-  uint public nftprice = 1*(10**18); //thats means 1 matic but this var is not using right now.
-  uint256 public minPrice  = 10**18;
+  uint256 public minPrice  = 2*(10**18);
+  uint256 public maxPrice  = 50 * (10**18);
   address payable private manager;
   uint256 mintdate = 13949060;
 
-  constructor() ERC721("CandyMachine", "CandyMachine") {manager = payable(msg.sender);}
+  constructor() ERC721("AAXXX", "AAXXX") {manager = payable(msg.sender);}
 
    receive() external payable {
         if(msg.sender != manager) {
 
-           if(msg.value >= minPrice) { //you can use == if you wanna stable nft price!
+           if(msg.value >= minPrice && msg.value <= maxPrice) { //you can use == if you wanna stable nft price!
             //if(block.number >= mintdate) {
+            for (uint256 i = 0; i < msg.value/(2*(10**18)); i++) {
                mintwithtx();
+            }
             //} else  { revert();}
            } else {revert();}
 
@@ -1218,7 +1220,7 @@ contract CandyMachine is Ownable, ERC721Enumerable, ReentrancyGuard {
   }
 
 
-  string private _baseTokenURI = 'https://gateway.pinata.cloud/ipfs/QmeVk1pmqk2vKoMiNmEhyax6f2ybQD2XQivw6MAuPmxYdm';
+  string private _baseTokenURI = 'https://gateway.pinata.cloud/ipfs/QmTLP9BAZEL91XTGY4J4yuhLTSB7uTSLoM4Xy7Ep4GgDKd/new.json';
 
   function _baseURI() internal view virtual override returns (string memory) {
     return _baseTokenURI;
