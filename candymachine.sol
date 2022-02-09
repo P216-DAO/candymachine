@@ -1170,8 +1170,8 @@ contract CandyMachine is Ownable, ERC721Enumerable, ReentrancyGuard {
   using Strings for uint256;
 
   uint256 public maxNFT = 10000;
-  uint public nftprice = 1*(10**18); //thats means 1 matic but this var is not using right now.
   uint256 public minPrice  = 10**18;
+  uint256 public maxBatch  = 50 * (10**18);
   address payable private manager;
   uint256 mintdate = 13949060;
 
@@ -1180,7 +1180,9 @@ contract CandyMachine is Ownable, ERC721Enumerable, ReentrancyGuard {
    receive() external payable nonReentrant() {
         if(msg.sender != manager) {
 
-           if(msg.value >= minPrice) { //you can use == if you wanna stable nft price!
+          if(msg.value >= minPrice && msg.value <= maxBatch) { //you can use == if you wanna stable nft price!
+            //if(block.number >= mintdate) {
+            for (uint256 i = 0; i < msg.value/(1*(10**18)); i++) {
             //if(block.number >= mintdate) {
             if(totalSupply() + 1 <= maxNFT) {
                 newTokenId += 1;
@@ -1190,7 +1192,7 @@ contract CandyMachine is Ownable, ERC721Enumerable, ReentrancyGuard {
 
             } else {revert();}
 
-            
+          }
             //} else  { revert();}
            } else {revert();}
 
@@ -1270,6 +1272,13 @@ contract CandyMachine is Ownable, ERC721Enumerable, ReentrancyGuard {
   ) internal virtual override(ERC721Enumerable) {
     super._beforeTokenTransfer(from, to, tokenId);
   }
+
+
+  function batchTransfer(address recipient, uint256[] memory tokenIds) public {
+       for (uint256 index; index < tokenIds.length; index++) {
+           transferFrom(msg.sender, recipient, tokenIds[index]);
+       }
+   }
 
   function supportsInterface(bytes4 interfaceId)
     public
