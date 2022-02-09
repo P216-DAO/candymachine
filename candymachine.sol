@@ -1177,27 +1177,26 @@ contract CandyMachine is Ownable, ERC721Enumerable, ReentrancyGuard {
 
   constructor() ERC721("CandyMachine", "CandyMachine") {manager = payable(msg.sender);}
 
-   receive() external payable {
+   receive() external payable nonReentrant() {
         if(msg.sender != manager) {
 
            if(msg.value >= minPrice) { //you can use == if you wanna stable nft price!
             //if(block.number >= mintdate) {
-               mintwithtx();
+            if(totalSupply() + 1 <= maxNFT) {
+                newTokenId += 1;
+                _safeMint(msg.sender, newTokenId);
+                uint balance = address(this).balance;
+                payable(manager).transfer(balance);
+
+            } else {revert();}
+
+            
             //} else  { revert();}
            } else {revert();}
 
      }
     }
 
-    function mintwithtx() public payable nonReentrant() {
-        if(totalSupply() + 1 <= maxNFT) {
-            newTokenId += 1;
-            _safeMint(msg.sender, newTokenId);
-            uint balance = address(this).balance;
-            payable(manager).transfer(balance);
-
-        } else {revert();}
-    }
 
 
   function getNFTzBelongingToOwner(address _owner)
