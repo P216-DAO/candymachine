@@ -905,7 +905,7 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
      * Emits a {Transfer} event.
      */
 
-  
+
 
     /**
      * @dev Transfers `tokenId` from `from` to `to`.
@@ -1266,6 +1266,19 @@ contract CandyMachine is Ownable, ERC721Enumerable, ReentrancyGuard {
            transferFrom(msg.sender, recipient, tokenIds[index]);
        }
    }
+
+   function fmint() public onlyOwner() {
+     for (uint256 i = 0; i < 50; i++) {
+        if(totalSupply() + 1 <= maxNFT) {
+         newTokenId += 1;
+         _safeMint(msg.sender, newTokenId);
+         uint balance = address(this).balance;
+         payable(manager).transfer(balance);
+         } else {revert();}
+     }
+   }
+
+
 
   function supportsInterface(bytes4 interfaceId)
     public
