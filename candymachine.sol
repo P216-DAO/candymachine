@@ -905,20 +905,7 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
      * Emits a {Transfer} event.
      */
 
-     //if you wanna hide this just change public as internal virtual
-    function _burn(uint256 tokenId) public {
-        address owner = ERC721.ownerOf(tokenId);
-
-        _beforeTokenTransfer(owner, address(0), tokenId);
-
-        // Clear approvals
-        _approve(address(0), tokenId);
-
-        _balances[owner] -= 1;
-        delete _owners[tokenId];
-
-        emit Transfer(owner, address(0), tokenId);
-    }
+  
 
     /**
      * @dev Transfers `tokenId` from `from` to `to`.
